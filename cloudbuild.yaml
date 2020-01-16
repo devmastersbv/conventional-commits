@@ -1,6 +1,9 @@
-steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['pull', 'gcr.io/cloud-builders/git']
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--tag=gcr.io/$PROJECT_ID/convential-commits:$TAG_NAME', '.']
 images: ['gcr.io/$PROJECT_ID/conventional-commits:$TAG_NAME']
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['pull', 'gcr.io/cloud-builders/git']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--tag=gcr.io/$PROJECT_ID/conventional-commits:$TAG_NAME', '.']
+  #Test sane output
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['run', '--rm', '--volume','/workspace:/git', 'gcr.io/$PROJECT_ID/conventional-commits:$TAG_NAME']
