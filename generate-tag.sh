@@ -61,4 +61,9 @@ if [ $LEVEL == 0 ]; then
   MINOR=0
 fi
 
-echo "$MAJOR.$MINOR.$PATCH-rc.$COUNT"
+SHA=""
+if [ "$1" == "--sha" ]; then
+  SHA="-$(git rev-parse --short HEAD)"
+fi
+
+echo "$MAJOR.$MINOR.$PATCH-rc.$COUNT$SHA"
