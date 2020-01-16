@@ -41,7 +41,7 @@ while read -r line; do
     ((MINOR=MINOR+1))
     setLevel 1
   fi
-  if [[ $(echo "$line" | grep -E 'feature:|feat:|performance:') ]]; then
+  if [[ $(echo "$line" | grep -E 'feature:|feat:|performance:|perf:') ]]; then
     ((PATCH=PATCH+1))
     setLevel 2
   fi
