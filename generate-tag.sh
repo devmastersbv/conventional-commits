@@ -32,16 +32,16 @@ function setLevel(){
 }
 
 while read -r line; do
-  if [[ $(echo "$line" | grep -E '(improvement|fix|feature|feat|performance)\!:') ]] || [[ $(echo "$line" | grep 'BREAKING CHANGE:') ]]; then
+  if [[ $(echo "$line" | grep -E '(improvement|fix|feature|feat|performance)(\([^\)]*\))*\!:') ]] || [[ $(echo "$line" | grep 'BREAKING CHANGE:') ]]; then
     setLevel 0
     ((MAJOR=MAJOR+1))
     break
   fi
-  if [[ $(echo "$line" | grep -E 'improvement:|fix:') ]]; then
+  if [[ $(echo "$line" | grep -E '(feature|feat|performance|perf)(\([^\)]*\))*:') ]]; then
     ((MINOR=MINOR+1))
     setLevel 1
   fi
-  if [[ $(echo "$line" | grep -E 'feature:|feat:|performance:|perf:') ]]; then
+  if [[ $(echo "$line" | grep -E '(improvement|fix)(\([^\)]*\))*:') ]]; then
     ((PATCH=PATCH+1))
     setLevel 2
   fi
