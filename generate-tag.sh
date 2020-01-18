@@ -33,15 +33,15 @@ function setLevel(){
 
 while read -r line; do
   if [[ $(echo "$line" | grep -E '(improvement|fix|feature|feat|performance)(\([^\)]*\))*\!:') ]] || [[ $(echo "$line" | grep 'BREAKING CHANGE:') ]]; then
-    ((MAJOR=MAJOR+1))
+    ((MAJOR=$(echo "$VERSION" | cut -d'.' -f1)+1))
     setLevel 0
   fi
   if [[ $(echo "$line" | grep -E '(feature|feat|performance|perf)(\([^\)]*\))*:') ]]; then
-    ((MINOR=MINOR+1))
+    ((MINOR=$(echo "$VERSION" | cut -d'.' -f2)+1))
     setLevel 1
   fi
   if [[ $(echo "$line" | grep -E '(improvement|fix)(\([^\)]*\))*:') ]]; then
-    ((PATCH=PATCH+1))
+    ((PATCH=$(echo "$VERSION" | cut -d'.' -f3)+1))
     setLevel 2
   fi
   ((COUNT=COUNT+1))
