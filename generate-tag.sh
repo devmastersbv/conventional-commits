@@ -12,7 +12,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-TAG=$(git describe HEAD)
+TAG=$(git describe --tags)
 VERSION=$(echo "$TAG" | grep -o '[0-9]*\.[0-9]*\.[0-9]*')
 
 if [ -z "$TAG" ] || [ -z "$VERSION" ] ; then
