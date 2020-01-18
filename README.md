@@ -32,7 +32,7 @@ SHA can be included in case you run this on multiple staging environments.
 ### Docker
 To run without installing use the following command:
 ```sh
-docker run -it --rm -v $(pwd)/.git:/git/.git gcr.io/devmastersbv/conventional-commits:1.1.3
+docker run -it --rm -v $(pwd)/.git:/git/.git gcr.io/devmastersbv/conventional-commits:2.0.0
 ```
 Do not forget to `gcloud auth configure-docker` and use the latest release
 
