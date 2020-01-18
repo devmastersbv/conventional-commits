@@ -36,6 +36,5 @@ docker run -it --rm -v $(pwd)/.git:/git/.git gcr.io/devmastersbv/conventional-co
 ```
 Do not forget to `gcloud auth configure-docker` and use the latest release
 
-
 ## Contributions
 Any contributions or comments are welcome!
