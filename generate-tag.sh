@@ -49,7 +49,7 @@ done <<< "$MESSAGES"
 
 #No bumps required. Return a post-release tag
 if [ $LEVEL == 3 ]; then
-  echo "$MAJOR.$MINOR.$PATCH-$COUNT$SHA"
+  echo "$MAJOR.$MINOR.$PATCH-$COUNT-$SHA"
   exit 0;
 fi
 
