@@ -47,6 +47,11 @@ while read -r line; do
   ((COUNT=COUNT+1))
 done <<< "$MESSAGES"
 
+SHA=""
+if [ "$1" == "--sha" ]; then
+  SHA="-$(git rev-parse --short HEAD)"
+fi
+
 #No bumps required. Return a post-release tag
 if [ $LEVEL == 3 ]; then
   echo "$MAJOR.$MINOR.$PATCH-$COUNT-$SHA"
@@ -59,11 +64,6 @@ if [ "$LEVEL" -le 1 ]; then
 fi
 if [ $LEVEL == 0 ]; then
   MINOR=0
-fi
-
-SHA=""
-if [ "$1" == "--sha" ]; then
-  SHA="-$(git rev-parse --short HEAD)"
 fi
 
 echo "$MAJOR.$MINOR.$PATCH-rc.$COUNT$SHA"
