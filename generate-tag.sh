@@ -47,6 +47,12 @@ while read -r line; do
   ((COUNT=COUNT+1))
 done <<< "$MESSAGES"
 
+#No bumps required. Return a post-release tag
+if [ $LEVEL == 3 ]; then
+  echo "$MAJOR.$MINOR.$PATCH-$COUNT$SHA"
+  exit 0;
+fi
+
 #Reset minor or patch if the parent got incremented
 if [ "$LEVEL" -le 1 ]; then
   PATCH=0
