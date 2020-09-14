@@ -36,11 +36,11 @@ while read -r line; do
     ((MAJOR=$(echo "$VERSION" | cut -d'.' -f1)+1))
     setLevel 0
   fi
-  if [[ $(echo "$line" | grep -E '(feature|feat|performance|perf)(\([^\)]*\))*:') ]]; then
+  if [[ $(echo "$line" | grep -E '(feature|feat)(\([^\)]*\))*:') ]]; then
     ((MINOR=$(echo "$VERSION" | cut -d'.' -f2)+1))
     setLevel 1
   fi
-  if [[ $(echo "$line" | grep -E '(improvement|fix)(\([^\)]*\))*:') ]]; then
+  if [[ $(echo "$line" | grep -E '(improvement|fix|perf|performance)(\([^\)]*\))*:') ]]; then
     ((PATCH=$(echo "$VERSION" | cut -d'.' -f3)+1))
     setLevel 2
   fi
